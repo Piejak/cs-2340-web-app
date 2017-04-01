@@ -4,11 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var firebase = require("firebase");
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBG02wj_HGaUUTxHoHToT0k0dmCX8ppRnk",
+  authDomain: "waterreport-c9250.firebaseapp.com",
+  databaseURL: "https://waterreport-c9250.firebaseio.com",
+};
+firebase.initializeApp(config);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

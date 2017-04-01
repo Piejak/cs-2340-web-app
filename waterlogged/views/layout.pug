@@ -2,6 +2,21 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/materialize.min.css')
   body
-    block content
+    nav
+        div(class="nav-wrapper")
+            a(href="#!", class="brand-logo") Waterlogged
+            ul(id="nav-mobile", class="right hide-on-med-and-down")
+                li
+                    a(href="reports") Reports
+                li
+                    a(href="user") Profile
+    div(class="container")
+        block content
+
+    script(type="text/javascript", src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js")
+    script
+        include ../public/javascripts/firebase_init.js
+    script(type="text/javascript", src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(type="text/javascript" src="javascripts/materialize.min.js")
