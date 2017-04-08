@@ -1,4 +1,4 @@
 <%= render 'form' %>
 
+<%= link_to "Cancel", reports_path %> | 
 <%= link_to "Delete", report_path(@report), method: :delete, data: { confirm: "Are you sure you want to delete this report?" } %>
-<%= link_to "Cancel", reports_path %>
