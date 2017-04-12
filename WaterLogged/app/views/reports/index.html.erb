@@ -1,0 +1,11 @@
+<div class="list-group">
+    <% @reports.each do |report| -%>
+        <%= link_to report_path(report), :class => "list-group-item" do %>
+            <h4 class="list-group-item-heading">Brian Piejak</h4>
+            <p class="list-group-item-text"> <strong>Condition: </strong> <%= report.condition %> </p>
+            <p class="list-group-item-text"> <strong>Type: </strong> <%= report.watertype %> </p>
+            <p class="list-group-item-text"> <strong>Location: </strong> <%= report.latitude %>, <%= report.longitude %> </p>
+            <p class="list-group-item-text"> <strong>Created: </strong> <%= report.created_at %> </p>
+        <% end %>
+    <% end -%>
+</div>
