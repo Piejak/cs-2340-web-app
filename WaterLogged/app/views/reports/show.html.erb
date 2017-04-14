@@ -1,7 +1,13 @@
-<h4 class="list-group-item-heading">Brian Piejak</h4>
+<h4 class="list-group-item-heading"><%= @report.user.user_name %></h4>
 <p class="list-group-item-text"> <strong>Condition: </strong> <%= @report.condition %> </p>
 <p class="list-group-item-text"> <strong>Type: </strong> <%= @report.watertype %> </p>
 <p class="list-group-item-text"> <strong>Location: </strong> <%= @report.latitude %>, <%= @report.longitude %> </p>
 <p class="list-group-item-text"> <strong>Created: </strong> <%= @report.created_at %> </p>
 <br>
-<%= link_to "Cancel", reports_path %> | <%= link_to "Edit", edit_report_path(@report) %>
+<% if @report.user.id == current_user.id %>
+    <%= link_to "Cancel", reports_path %>
+    |
+    <%= link_to "Edit", edit_report_path(@report) %>
+<% else %>
+    <%= link_to "Cancel", reports_path %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408183451) do
+ActiveRecord::Schema.define(version: 20170414002540) do
 
   create_table "reports", force: :cascade do |t|
     t.string   "condition"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20170408183451) do
     t.float    "longitude"
     t.string   "reporter"
     t.string   "watertype"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

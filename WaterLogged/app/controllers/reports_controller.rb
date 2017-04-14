@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
 
+    before_action :authenticate_user!
+    before_action :check_ownership, only: [:edit, :update, :destroy]
     before_action :set_report, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -7,11 +9,13 @@ class ReportsController < ApplicationController
     end
 
     def new
-        @report = Report.new
+        @report = current_user.reports.build
     end
 
     def create
-        if @report = Report.create(report_params)
+        @report = current_user.reports.build(report_params)
+
+        if @report.save
             flash[:success] = "Report was created successfully"
             redirect_to reports_path
         else
@@ -49,5 +53,12 @@ class ReportsController < ApplicationController
 
     def set_report
         @report = Report.find(params[:id])
+    end
+
+    def check_ownership
+        unless current_user == @report.user
+            flash[:alert] = "This report was made by another user"
+            redirect_to root_path
+        end
     end
 end
